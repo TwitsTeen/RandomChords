@@ -43,9 +43,7 @@ export default function ChordRandomizer() {
       return;
     }
     if (isNaN(number) || number <= 0) {
-      Alert.alert(
-        `Please enter a valid number of chords (1 to ${chords[selectedKey].length}).`,
-      );
+      Alert.alert(`Please enter a valid number of chords.`);
       return;
     }
     const random_chords = randomize_chords(selectedKey, number);
@@ -69,6 +67,14 @@ export default function ChordRandomizer() {
           placeholder={{ label: "Select a key", value: null }}
           style={pickerSelectStyles}
         />
+        <Text>
+          {chords[selectedKey].map((chord, index) => (
+            <Text key={index} style={{ fontSize: 30 }}>
+              {" "}
+              {chord}{" "}
+            </Text>
+          ))}
+        </Text>
       </View>
 
       <Text style={styles.label}>Enter number of chords:</Text>
